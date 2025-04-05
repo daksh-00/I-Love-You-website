@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I Love You</title>
+</head>
+<body style="text-align: center; margin-top: 100px; font-family: sans-serif;">
+
+  <script>
+    window.onload = function() {
+      const name = prompt("Enter your name:");
+
+      
+      if (name && name.trim() !== "") {
+        
+        
+        setTimeout(function() {
+            window.location.href = `page2.htm?name=${encodeURIComponent(name)}`;
+            // Sending name variable from One webpage to another
+        }, 2);
+      } else {
+        alert("You didn't enter a name. Reloading...");
+        location.reload(); // Ask again
+      }
+    }
+  </script>
+
+</body>
+</html>

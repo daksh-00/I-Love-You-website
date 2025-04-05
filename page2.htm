@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You Forever 💘</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      position: relative;
+      color: white;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 3px 3px 10px rgba(255, 0, 102, 0.7);
+      z-index: 2;
+    }
+
+    p {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-top: 10px;
+      z-index: 2;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: sparkleAnim 4s linear infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0% {
+        transform: scale(0.5);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.5);
+        opacity: 0.5;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      text-align: center;
+      width: 100%;
+      font-size: 1rem;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      opacity: 0.8;
+      z-index: 2;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+    
+    footer a:hover {
+      opacity: 0.8;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <h1>I Love You, <span id="txt">❤️</span></h1>
+  <p>Tum ho meri har khushi ki wajah... Forever & Always</p>
+
+  <footer>
+    <a href="https://www.linkedin.com/in/deepak-kambala-415000327/">Made by <strong>Deepak Kambala</strong> — <em>CodeTank</em></a>
+  </footer>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.animationDuration = 2 + Math.random() * 3 + "s";
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 4000);
+    }
+
+    setInterval(createHeart, 300);
+    setInterval(createSparkle, 200);
+
+    <!-- Accessing name variable from One webpage to another -->
+
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const text = document.getElementById("txt");
+
+    if (name) {
+      text.textContent = `${name} ❤️`;
+    }
+  </script>
+
+</body>
+</html>
