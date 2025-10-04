@@ -18,6 +18,17 @@
 
       if (name && name.trim() !== "") {
         window.location.href = `page2.htm?name=${encodeURIComponent(name)}`;
+    window.onload = function() {
+      const SpecialName = prompt("Type the name of your special someone and share the magical next screen with them 💌");
+
+      
+      if (SpecialName && SpecialName.trim() !== "") {
+        
+        
+        setTimeout(function() {
+            window.location.href = `page2.htm?name=${encodeURIComponent(SpecialName)}`;
+            // Sending name variable from One webpage to another
+        }, 2);
       } else {
         alert("Please enter a name to continue.");
       }
