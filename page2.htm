@@ -117,27 +117,184 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 15px;
-      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       width: 100%;
-      font-size: 1rem;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.95rem;
       color: white;
       font-family: 'Poppins', sans-serif;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      opacity: 0.8;
+      z-index: 10;
+      
+      /* Enhanced glass morphism effects with pink theme */
+      background: rgba(255, 182, 193, 0.4); /* Pink fallback for love theme */
+      background: linear-gradient(
+        135deg,
+        rgba(255, 105, 180, 0.5),
+        rgba(255, 182, 193, 0.3)
+      );
+      backdrop-filter: blur(25px) saturate(1.8);
+      -webkit-backdrop-filter: blur(25px) saturate(1.8);
+      -moz-backdrop-filter: blur(25px) saturate(1.8);
+      -ms-backdrop-filter: blur(25px) saturate(1.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 
+        0 -8px 32px rgba(255, 105, 180, 0.2),
+        0 -4px 16px rgba(255, 182, 193, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      
+      /* Enhanced visual depth */
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 182, 193, 0.2) 0%,
+        rgba(255, 105, 180, 0.1) 50%,
+        rgba(255, 192, 203, 0.15) 100%
+      );
+      z-index: -1;
+    }
+
+    footer .footer-content {
+      position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer .made-by {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      font-weight: 300;
+      letter-spacing: 0.5px;
     }
 
     footer a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(255, 192, 203, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    footer a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: left 0.6s ease;
     }
     
     footer a:hover {
-      opacity: 0.8;
+      transform: translateY(-2px);
+      background: rgba(255, 182, 193, 0.4);
+      box-shadow: 
+        0 8px 25px rgba(255, 105, 180, 0.3),
+        0 4px 10px rgba(255, 182, 193, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    footer a:hover::before {
+      left: 100%;
+    }
+
+    footer a:active {
+      transform: translateY(0);
+    }
+
+    /* Subtle entrance animation for footer */
+    footer {
+      animation: footerSlideUp 1s ease-out;
+    }
+
+    @keyframes footerSlideUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive design for footer */
+    @media (max-width: 600px) {
+      footer {
+        width: 85%;
+        padding: 16px 20px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+      
+      footer a {
+        font-size: 0.95rem;
+        padding: 6px 12px;
+      }
+      
+      footer .made-by {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Enhanced text visibility */
+    footer .made-by {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Fallback styling for browsers without backdrop-filter support */
+    @supports not (backdrop-filter: blur(30px)) {
+      footer {
+        background: rgba(255, 105, 180, 0.6);
+        background-image: linear-gradient(
+          135deg,
+          rgba(255, 105, 180, 0.7) 0%,
+          rgba(255, 182, 193, 0.4) 50%,
+          rgba(255, 192, 203, 0.6) 100%
+        );
+        box-shadow: 
+          0 -8px 32px rgba(255, 105, 180, 0.4),
+          0 -4px 16px rgba(255, 182, 193, 0.3),
+          inset 0 2px 4px rgba(255, 255, 255, 0.3);
+      }
+      
+      footer a {
+        background: rgba(255, 192, 203, 0.35);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+      }
+      
+      footer a:hover {
+        background: rgba(255, 182, 193, 0.5);
+      }
     }
     
     #music-toggle {
@@ -232,7 +389,12 @@
   </button>
 
   <footer>
-    <a href="https://www.linkedin.com/in/deepak-kambala-415000327/">Made by <strong>Deepak Kambala</strong></a>
+    <div class="footer-content">
+      <div class="made-by">Crafted with ❤️ by</div>
+      <a href="https://www.linkedin.com/in/deepak-kambala-415000327/">
+        <strong>Deepak Kambala</strong>
+      </a>
+    </div>
   </footer>
 
   <script>
