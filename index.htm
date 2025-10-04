@@ -7,14 +7,14 @@
 
   <script>
     window.onload = function() {
-      const name = prompt("Type the name of your special someone and share the magical next screen with them 💌");
+      const SpecialName = prompt("Type the name of your special someone and share the magical next screen with them 💌");
 
       
-      if (name && name.trim() !== "") {
+      if (SpecialName && SpecialName.trim() !== "") {
         
         
         setTimeout(function() {
-            window.location.href = `page2.htm?name=${encodeURIComponent(name)}`;
+            window.location.href = `page2.htm?name=${encodeURIComponent(SpecialName)}`;
             // Sending name variable from One webpage to another
         }, 2);
       } else {
