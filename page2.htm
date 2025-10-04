@@ -334,6 +334,54 @@
       stroke-linejoin: round;
     }
 
+    .nav-buttons {
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 10;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      min-width: 160px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateX(-5px);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .nav-buttons {
+        top: 70px;
+        right: 10px;
+        gap: 10px;
+      }
+
+      .nav-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: 140px;
+      }
+    }
+
 .cursor-heart {
       position: absolute;
       pointer-events: none;
@@ -377,6 +425,12 @@
 
   <h1>I Love You, <span id="txt">❤️</span></h1>
   <p>Tum ho meri har khushi ki wajah... Forever & Always</p>
+
+  <div class="nav-buttons">
+    <a href="reasons.htm" class="nav-btn">💕 Why I Love You</a>
+    <a href="memories.htm" class="nav-btn">📸 Our Memories</a>
+    <a href="index.htm" class="nav-btn">🏠 Home</a>
+  </div>
 
   <audio id="background-music" src="music/music.mp3" loop></audio>
   <button id="music-toggle" title="Toggle Music">
@@ -459,6 +513,15 @@
 
     if (name) {
       text.textContent = `${name} ❤️`;
+      
+      // Update navigation links to pass name parameter
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (!btn.href.includes('index.htm')) {
+          const url = new URL(btn.href);
+          url.searchParams.set('name', name);
+          btn.href = url.toString();
+        }
+      });
     }
 
     const music = document.getElementById("background-music");
