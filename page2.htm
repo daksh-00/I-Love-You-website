@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins&display=swap" rel="stylesheet">
 
   <style>
+
     body {
       margin: 0;
       padding: 0;
@@ -176,6 +177,43 @@
       stroke-linejoin: round;
     }
 
+.cursor-heart {
+      position: absolute;
+      pointer-events: none;
+
+      opacity: 10; 
+      animation: growAndFade 0.7s ease-out forwards;
+    }
+
+    .cursor-heart:before,
+    .cursor-heart:after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #c21d6f;
+      border-radius: 50%;
+      top: -6px;
+    }
+
+    .cursor-heart:after {
+      left: -6px;
+    }
+
+    @keyframes growAndFade {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -225,6 +263,31 @@
 
     setInterval(createHeart, 300);
     setInterval(createSparkle, 200);
+
+// --- Mouse Heart Trail Feature ---
+    const hearts = [];
+    const trailLength = 50; 
+    let heartIndex = 0; 
+
+    for (let i = 0; i < trailLength; i++) {
+      const h = document.createElement('div');
+      h.classList.add('cursor-heart');
+      document.body.appendChild(h);
+      hearts.push(h);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const heart = hearts[heartIndex];
+      
+      heartIndex = (heartIndex + 1) % trailLength;
+
+      heart.style.left = `${e.clientX - 6}px`; 
+      heart.style.top = `${e.clientY - 6}px`;
+      
+      heart.style.animation = 'none';
+      void heart.offsetWidth; 
+      heart.style.animation = 'growAndFade 0.7s ease-out forwards';
+    });
 
     <!-- Accessing name variable from One webpage to another -->
 

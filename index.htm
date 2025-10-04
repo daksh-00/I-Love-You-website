@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>I Love You</title>
+  <title>A Message For You</title>
 </head>
-<body style="text-align: center; margin-top: 100px; font-family: sans-serif;">
+<body style="text-align: center; margin-top: 100px; font-family: sans-serif; background-color: #fce4ec;">
+
+  <h1 style="color: #c2185b;">A special message is waiting...</h1>
+  <p style="color: #555;">Click the button below to reveal it.</p>
+  
+  <button id="enterButton" style="padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #ff4081; color: white; border: none; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    ✨ Click to Continue
+  </button>
 
   <script>
-    window.onload = function() {
+    document.getElementById('enterButton').addEventListener('click', function() {
       const name = prompt("Type the name of your special someone and share the magical next screen with them 💌");
 
-      
       if (name && name.trim() !== "") {
-        
-        
-        setTimeout(function() {
-            window.location.href = `page2.htm?name=${encodeURIComponent(name)}`;
-            // Sending name variable from One webpage to another
-        }, 2);
+        window.location.href = `page2.htm?name=${encodeURIComponent(name)}`;
       } else {
-        alert("You didn't enter a name. Reloading...");
-        location.reload(); // Ask again
+        alert("Please enter a name to continue.");
       }
-    }
+    });
   </script>
 
 </body>
