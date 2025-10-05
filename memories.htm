@@ -70,16 +70,15 @@
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 4.5rem;
-      color: white;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-        3px 3px 15px rgba(0, 0, 0, 0.3);
+      color: #700124;
+       text-shadow: 0 2px 10px rgba(255, 100, 220, 0.2);
       margin-bottom: 15px;
     }
 
     .subtitle {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
-      color: rgba(255, 255, 255, 0.95);
+      color: #AA0144;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     }
 
@@ -202,14 +201,14 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.6rem;
       font-weight: 700;
-      color: white;
+      color: #DE0C78;
       margin-bottom: 10px;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .memory-date {
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: #F01C9C;
       font-weight: 600;
       margin-bottom: 10px;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -217,7 +216,7 @@
 
     .memory-text {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.95);
+       color: #4C020F;
       line-height: 1.6;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
     }
@@ -226,26 +225,29 @@
       position: fixed;
       top: 30px;
       left: 30px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      backdrop-filter: blur(5px);
       border: 2px solid rgba(255, 255, 255, 0.4);
-      color: white;
+      color: rgba(0, 0, 0, 0.7);
       padding: 12px 25px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgb(0, 0, 0);
       z-index: 100;
     }
-
     .back-button:hover {
-      background: rgba(255, 255, 255, 0.35);
-      transform: translateX(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(90deg, var(--accent1, #ff7a7a), var(--accent2, #ff2e63));
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 46, 99, 0.3);
+    } 
+    .back-button:hover::before {
+    transform: translateX(-4px);
+    color: #fff;
     }
-
     .sparkles {
       position: fixed;
       top: 0;
