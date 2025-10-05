@@ -425,7 +425,7 @@
 <body>
 
   <h1>I Love You, <span id="txt">❤️</span></h1>
-  <p>Tum ho meri har khushi ki wajah... Forever & Always</p>
+  <p id="love-text">Tum ho meri har khushi ki wajah... Forever & Always</p>
 
   <div class="nav-buttons">
     <a href="reasons.htm" class="nav-btn">💕 Why I Love You</a>
@@ -453,18 +453,34 @@
   </footer>
 
   <script>
+    // 💖 --- Random Romantic Paragraphs ---
+    const loveLines = [
+      "Tum ho meri har khushi ki wajah... Forever & Always ❤️",
+      "Tum meri duniya ho, jisme har subah tumse shuru hoti hai 🌅",
+      "Tera naam hi meri muskurahat ka sabab hai 😊",
+      "Chaand bhi sharma jaye, jab tum muskurati ho 🌙",
+      "Tum meri dil ki dhadkan ho, aur meri rooh ka sukoon 💓",
+      "Tere bina zindagi adhoori lagti hai 💔",
+      "Tere sath har lamha ek khubsurat kahani ban jaata hai ✨",
+      "Tum meri coffee ho — strong, sweet, aur addictive ☕❤️",
+      "Har dua mein sirf tumhara naam aata hai 🙏💘",
+      "Mujhe tumse milkar yakeen hua, pyaar asal mein hota hai 💞"
+    ];
+
+    const loveText = document.getElementById("love-text");
+    loveText.textContent = loveLines[Math.floor(Math.random() * loveLines.length)];
+
+    // 💕 --- Heart Animation ---
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 2 + Math.random() * 3 + "s";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
+      setTimeout(() => heart.remove(), 6000);
     }
 
+    // ✨ --- Sparkle Animation ---
     function createSparkle() {
       const sparkle = document.createElement("div");
       sparkle.classList.add("sparkle");
@@ -472,19 +488,16 @@
       sparkle.style.left = Math.random() * 100 + "vw";
       sparkle.style.animationDuration = 2 + Math.random() * 3 + "s";
       document.body.appendChild(sparkle);
-
-      setTimeout(() => {
-        sparkle.remove();
-      }, 4000);
+      setTimeout(() => sparkle.remove(), 4000);
     }
 
     setInterval(createHeart, 300);
     setInterval(createSparkle, 200);
 
-// --- Mouse Heart Trail Feature ---
+    // 💗 --- Mouse Heart Trail ---
     const hearts = [];
-    const trailLength = 50; 
-    let heartIndex = 0; 
+    const trailLength = 50;
+    let heartIndex = 0;
 
     for (let i = 0; i < trailLength; i++) {
       const h = document.createElement('div');
@@ -495,27 +508,23 @@
 
     document.addEventListener('mousemove', (e) => {
       const heart = hearts[heartIndex];
-      
       heartIndex = (heartIndex + 1) % trailLength;
-
-      heart.style.left = `${e.clientX - 6}px`; 
+      heart.style.left = `${e.clientX - 6}px`;
       heart.style.top = `${e.clientY - 6}px`;
-      
       heart.style.animation = 'none';
-      void heart.offsetWidth; 
+      void heart.offsetWidth;
       heart.style.animation = 'growAndFade 0.7s ease-out forwards';
     });
 
-    <!-- Accessing name variable from One webpage to another -->
-
+    // 💌 --- Access name from URL ---
     const params = new URLSearchParams(window.location.search);
     const name = params.get("name");
     const text = document.getElementById("txt");
 
     if (name) {
       text.textContent = `${name} ❤️`;
-      
-      // Update navigation links to pass name parameter
+
+      // Update nav links to pass the name parameter
       document.querySelectorAll('.nav-btn').forEach(btn => {
         if (!btn.href.includes('index.htm')) {
           const url = new URL(btn.href);
@@ -525,6 +534,7 @@
       });
     }
 
+    // 🎵 --- Music Toggle ---
     const music = document.getElementById("background-music");
     const musicToggle = document.getElementById("music-toggle");
     const iconMuted = document.getElementById("icon-muted");
@@ -543,8 +553,8 @@
       }
       isPlaying = !isPlaying;
     });
-
   </script>
 
 </body>
+
 </html>
