@@ -24,7 +24,6 @@ Check the help-wanted tag for specific needs
 ## 📝 Contribution Steps:
 ⭐ Star the repository (Required)
 
-👤 Follow my profile (Required)
 
 🍴 Fork the repository
 
@@ -45,7 +44,7 @@ git push origin amazing-feature
 ```
 🔔 Open a Pull Request
 
-# ⚠️ IMPORTANT: Your PR will only be accepted if you've starred the repo and followed my profile!
+
 
 ## 📄 License
 This project is licensed under the MIT License — see the LICENSE file for details.
