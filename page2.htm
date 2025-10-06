@@ -501,13 +501,13 @@
     <button id="theme-toggle" class="theme-btn">Change Theme</button>
   </div>
 
-  <audio id="background-music" src="music/music.mp3" loop></audio>
+  <audio id="background-music" src="music/music.mp3" autoplay loop></audio>
   <button id="music-toggle" title="Toggle Music">
-    <span id="icon-muted">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-    </span>
     <span id="icon-playing" style="display: none;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+    </span>
+    <span id="icon-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
     </span>
   </button>
 
@@ -604,23 +604,27 @@
 
     // 🎵 --- Music Toggle ---
     const music = document.getElementById("background-music");
-    const musicToggle = document.getElementById("music-toggle");
-    const iconMuted = document.getElementById("icon-muted");
-    const iconPlaying = document.getElementById("icon-playing");
-    let isPlaying = false;
+const musicToggle = document.getElementById("music-toggle");
+const iconMuted = document.getElementById("icon-muted");
+const iconPlaying = document.getElementById("icon-playing");
 
-    musicToggle.addEventListener("click", () => {
-      if (isPlaying) {
-        music.pause();
-        iconMuted.style.display = "inline";
-        iconPlaying.style.display = "none";
-      } else {
-        music.play().catch(e => console.error("Autoplay was prevented:", e));
-        iconMuted.style.display = "none";
-        iconPlaying.style.display = "inline";
-      }
-      isPlaying = !isPlaying;
-    });
+// Set initial state to playing
+let isPlaying = true;
+iconMuted.style.display = "none";
+iconPlaying.style.display = "inline";
+
+musicToggle.addEventListener("click", () => {
+  if (isPlaying) {
+    music.pause();
+    iconMuted.style.display = "inline";
+    iconPlaying.style.display = "none";
+  } else {
+    music.play().catch(e => console.error("Autoplay was prevented:", e));
+    iconMuted.style.display = "none";
+    iconPlaying.style.display = "inline";
+  }
+  isPlaying = !isPlaying;
+});
 
     const themes = ["light", "dark", "romantic", "purple"];
   let currentThemeIndex = 0;
