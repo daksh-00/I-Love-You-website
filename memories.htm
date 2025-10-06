@@ -312,69 +312,10 @@
         font-size: 0.9rem;
       }
     }
-
-  /* ---------- Theme Color Variables ---------- */
-  :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --accent-color: #ff3366;
-  }
-
-  /* Dark Theme */
-  body.dark-theme {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --accent-color: #bb86fc;
-  }
-
-  /* Romantic Pink Theme */
-  body.romantic-theme {
-    --bg-color: #ffe6f2;
-    --text-color: #b30059;
-    --accent-color: #ff66b2;
-  }
-
-  /* Elegant Purple Theme */
-  body.purple-theme {
-    --bg-color: #f2e6ff;
-    --text-color: #4b0082;
-    --accent-color: #9933ff;
-  }
-
-  /* Apply global colors */
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.4s ease, color 0.4s ease;
-  }
-
-  /* Theme button */
-  .theme-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--accent-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease, background 0.3s ease;
-    z-index: 1000;
-  }
-  .theme-btn:hover {
-    transform: scale(1.05);
-  }
-
   </style>
 </head>
 
 <body>
-
-  <button id="theme-toggle" class="theme-btn"> Change Theme</button>
-
 
   <a href="page2.htm" class="back-button">← Back</a>
 
@@ -478,30 +419,6 @@
     }
 
     setInterval(createSparkle, 500);
-
-    const themes = ["light", "dark", "romantic", "purple"];
-  let currentThemeIndex = 0;
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    document.body.classList.add(`${savedTheme}-theme`);
-    currentThemeIndex = themes.indexOf(savedTheme);
-  } else {
-    document.body.classList.add("light-theme");
-  }
-
-  const btn = document.getElementById("theme-toggle");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      document.body.classList.remove(`${themes[currentThemeIndex]}-theme`);
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      const newTheme = themes[currentThemeIndex];
-      document.body.classList.add(`${newTheme}-theme`);
-      localStorage.setItem("theme", newTheme);
-    });
-  }
-  
   </script>
 
 </body>
