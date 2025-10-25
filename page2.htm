@@ -13,6 +13,7 @@
 
 
 
+    /* ---------- Body & Background ---------- */
     body {
       margin: 0;
       padding: 0;
@@ -23,17 +24,26 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      color: white;
       background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
       background-size: 400% 400%;
       animation: gradientBG 10s ease infinite;
-      position: relative;
-      color: white;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     h1 {
@@ -52,6 +62,7 @@
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
     }
 
+    /* ---------- Heart Animation ---------- */
     .heart {
       position: absolute;
       width: 20px;
@@ -94,6 +105,7 @@
       }
     }
 
+    /* ---------- Sparkle Animation ---------- */
     .sparkle {
       position: absolute;
       width: 4px;
@@ -119,6 +131,7 @@
       }
     }
 
+    /* ---------- Footer ---------- */
     footer {
       position: fixed;
       bottom: 0;
@@ -131,26 +144,13 @@
       color: white;
       font-family: 'Poppins', sans-serif;
       z-index: 10;
-      
-      /* Enhanced glass morphism effects with pink theme */
-      background: rgba(255, 182, 193, 0.4); /* Pink fallback for love theme */
-      background: linear-gradient(
-        135deg,
-        rgba(255, 105, 180, 0.5),
-        rgba(255, 182, 193, 0.3)
-      );
+      background: rgba(255, 182, 193, 0.4);
+      background: linear-gradient(135deg, rgba(255, 105, 180, 0.5), rgba(255, 182, 193, 0.3));
       backdrop-filter: blur(25px) saturate(1.8);
-      -webkit-backdrop-filter: blur(25px) saturate(1.8);
-      -moz-backdrop-filter: blur(25px) saturate(1.8);
-      -ms-backdrop-filter: blur(25px) saturate(1.8);
       border-top: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 
-        0 -8px 32px rgba(255, 105, 180, 0.2),
-        0 -4px 16px rgba(255, 182, 193, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      
-      /* Enhanced visual depth */
+      box-shadow: 0 -8px 32px rgba(255, 105, 180, 0.2), 0 -4px 16px rgba(255, 182, 193, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
       overflow: hidden;
+      animation: footerSlideUp 1s ease-out;
     }
 
     footer::before {
@@ -160,12 +160,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 182, 193, 0.2) 0%,
-        rgba(255, 105, 180, 0.1) 50%,
-        rgba(255, 192, 203, 0.15) 100%
-      );
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 105, 180, 0.1) 50%, rgba(255, 192, 203, 0.15) 100%);
       z-index: -1;
     }
 
@@ -183,6 +178,7 @@
       opacity: 0.9;
       font-weight: 300;
       letter-spacing: 0.5px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     footer a {
@@ -195,7 +191,7 @@
       border-radius: 12px;
       background: rgba(255, 192, 203, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.4);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -208,21 +204,14 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.6s ease;
     }
-    
+
     footer a:hover {
       transform: translateY(-2px);
       background: rgba(255, 182, 193, 0.4);
-      box-shadow: 
-        0 8px 25px rgba(255, 105, 180, 0.3),
-        0 4px 10px rgba(255, 182, 193, 0.2);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3), 0 4px 10px rgba(255, 182, 193, 0.2);
       border-color: rgba(255, 255, 255, 0.4);
     }
 
@@ -234,163 +223,135 @@
       transform: translateY(0);
     }
 
-    /* Subtle entrance animation for footer */
-    footer {
-      animation: footerSlideUp 1s ease-out;
-    }
-
     @keyframes footerSlideUp {
       0% {
         transform: translateY(100%);
         opacity: 0;
       }
+
       100% {
         transform: translateY(0);
         opacity: 1;
       }
     }
 
-    /* Responsive design for footer */
-    @media (max-width: 600px) {
-      footer {
-        width: 85%;
-        padding: 16px 20px;
-        margin-bottom: 15px;
-        font-size: 0.9rem;
-      }
-      
-      footer a {
-        font-size: 0.95rem;
-        padding: 6px 12px;
-      }
-      
-      footer .made-by {
-        font-size: 0.8rem;
-      }
-    }
-
-    /* Enhanced text visibility */
-    footer .made-by {
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Fallback styling for browsers without backdrop-filter support */
-    @supports not (backdrop-filter: blur(30px)) {
-      footer {
-        background: rgba(255, 105, 180, 0.6);
-        background-image: linear-gradient(
-          135deg,
-          rgba(255, 105, 180, 0.7) 0%,
-          rgba(255, 182, 193, 0.4) 50%,
-          rgba(255, 192, 203, 0.6) 100%
-        );
-        box-shadow: 
-          0 -8px 32px rgba(255, 105, 180, 0.4),
-          0 -4px 16px rgba(255, 182, 193, 0.3),
-          inset 0 2px 4px rgba(255, 255, 255, 0.3);
-      }
-      
-      footer a {
-        background: rgba(255, 192, 203, 0.35);
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-      }
-      
-      footer a:hover {
-        background: rgba(255, 182, 193, 0.5);
-      }
-    }
-    
-    #music-toggle {
+    /* ---------- Heart Mattress ---------- */
+    .heart-mat {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid white;
-      color: white;
+      bottom: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 200px;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 1;
+      /* behind buttons */
+    }
+
+    .heart-mat .mat-heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: red;
+      transform: rotate(45deg);
+      opacity: 0.7;
+      animation: floatMat 5s infinite ease-in-out;
+    }
+
+    .heart-mat .mat-heart:before,
+    .heart-mat .mat-heart:after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: red;
       border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.3s ease, transform 0.2s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    #music-toggle:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-    
-    #music-toggle:active {
-        transform: scale(0.9);
+    .heart-mat .mat-heart:before {
+      top: -20px;
+      left: 0;
     }
 
-    #music-toggle svg {
-      width: 24px;
-      height: 24px;
-      fill: white;
-      stroke: white;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .heart-mat .mat-heart:after {
+      left: -20px;
+      top: 0;
     }
 
+    @keyframes floatMat {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-50px) rotate(45deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Hanging Buttons */
     .nav-buttons {
-  position: absolute;
-  top: 80px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px; 
-  z-index: 10;
-}
-
+      position: absolute;
+      bottom: 32%;
+      /* Lower half */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
+      z-index: 5;
+      /* Above hearts */
+    }
 
     .nav-btn {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      color: white;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 12px 20px;
-      border-radius: 25px;
-      cursor: pointer;
       font-size: 1rem;
       font-weight: 600;
-      transition: all 0.3s ease;
+      color: white;
       text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      min-width: 160px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 105, 180, 0.3);
+      border-radius: 12px;
+      border: 2px solid #ff66b2;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      /* glassy effect */
     }
 
     .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: translateX(-5px);
-      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+      transform: translateY(-6px);
+      background: rgba(255, 105, 180, 0.6);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
     }
 
-    @media (max-width: 768px) {
-      .nav-buttons {
-        top: 70px;
-        right: 10px;
-        gap: 10px;
-      }
-
-      .nav-btn {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-        min-width: 140px;
-      }
+    /* Hanging string */
+    .nav-btn::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: #ff66b2;
+      border-radius: 1px;
     }
 
-.cursor-heart {
+    /* ---------- Cursor Heart Trail ---------- */
+    .cursor-heart {
       position: absolute;
       pointer-events: none;
-
-      opacity: 10; 
+      opacity: 10;
       animation: growAndFade 0.7s ease-out forwards;
     }
 
@@ -400,7 +361,7 @@
       position: absolute;
       width: 12px;
       height: 12px;
-      background: #c21d6f;
+      background: red;
       border-radius: 50%;
       top: -6px;
     }
@@ -414,102 +375,168 @@
         transform: scale(0);
         opacity: 1;
       }
+
       50% {
         transform: scale(1.2);
         opacity: 0.6;
       }
+
       100% {
         transform: scale(0);
         opacity: 0;
       }
     }
-  /* ---------- Theme Color Variables ---------- */
-  :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --accent-color: #ff3366;
-  }
 
-  /* Dark Theme */
-  body.dark-theme {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --accent-color: #bb86fc;
-  }
+    /* ---------- Music Toggle ---------- */
+    #music-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 0, 0, 0.3);
+      border: 2px solid rgba(255, 0, 0, 0.5);
+      color: white;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-  /* Romantic Pink Theme */
-  body.romantic-theme {
-    --bg-color: #ffe6f2;
-    --text-color: #b30059;
-    --accent-color: #ff66b2;
-  }
+    #music-toggle:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
 
-  /* Elegant Purple Theme */
-  body.purple-theme {
-    --bg-color: #f2e6ff;
-    --text-color: #4b0082;
-    --accent-color: #9933ff;
-  }
+    #music-toggle:active {
+      transform: scale(0.9);
+    }
 
-  /* Apply global colors */
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.4s ease, color 0.4s ease;
-  }
+    #music-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: red;
+      stroke: red;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
-  /* Theme button */
-  .theme-btn {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+    /* ---------- Theme Toggle Circular ---------- */
+    .theme-toggle-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 80px;
+      width: 45px;
+      /* large outer circle */
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 0, 0, 0.3);
+      /* red with opacity */
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid rgba(255, 0, 0, 0.5);
+      /* fixed red border */
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle-wrapper:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
 
-.theme-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateX(-5px);
-  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-}
+    .theme-toggle-wrapper input {
+      display: none;
+    }
 
-/* Remove position: fixed */
+    /* Inner toggle circle */
+    .theme-toggle-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      /* fixed red */
+      transition: transform 0.3s ease;
+    }
+
+    /* Slide circle on checked */
+    .theme-toggle-wrapper input:checked+.theme-toggle-circle {
+      transform: translateX(20px);
+    }
 
 
+    /* ---------- Theme Colors ---------- */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --accent-color: #ff3366;
+    }
 
+    body.dark-theme {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --accent-color: #bb86fc;
+    }
+
+    body.romantic-theme {
+      --bg-color: #ffe6f2;
+      --text-color: #b30059;
+      --accent-color: #ff66b2;
+    }
+
+    body.purple-theme {
+      --bg-color: #f2e6ff;
+      --text-color: #4b0082;
+      --accent-color: #9933ff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
   </style>
 </head>
+
 <body>
-
-
-
 
   <h1>I Love You, <span id="txt">❤️</span></h1>
   <p id="love-text">Tum ho meri har khushi ki wajah... Forever & Always</p>
 
   <div class="nav-buttons">
-    <a href="reasons.htm" class="nav-btn">💕 Why I Love You</a>
-    <a href="memories.htm" class="nav-btn">📸 Our Memories</a>
-    <a href="index.htm" class="nav-btn">🏠 Home</a>
-    <button id="theme-toggle" class="theme-btn">Change Theme</button>
+    <a class="nav-btn love" href="./reasons.htm">💌 Why I Love You</a>
+    <a class="nav-btn memories" href="./memories.htm">📸 Our Memories</a>
+    <a class="nav-btn home" href="./index.htm">🏠 Home</a>
   </div>
+
+  <div class="heart-mat"></div>
 
   <audio id="background-music" src="music/music.mp3" autoplay loop></audio>
   <button id="music-toggle" title="Toggle Music">
     <span id="icon-playing" style="display: none;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
     </span>
     <span id="icon-muted">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
     </span>
   </button>
+  <div class="theme-toggle-wrapper">
+    <input type="checkbox" id="theme-toggle-checkbox" />
+    <div class="theme-toggle-circle"></div>
+  </div>
+
+
 
   <footer>
     <div class="footer-content">
@@ -521,7 +548,7 @@
   </footer>
 
   <script>
-    // 💖 --- Random Romantic Paragraphs ---
+    // ❤️ Random love lines
     const loveLines = [
       "Tum ho meri har khushi ki wajah... Forever & Always ❤️",
       "Tum meri duniya ho, jisme har subah tumse shuru hoti hai 🌅",
@@ -534,11 +561,10 @@
       "Har dua mein sirf tumhara naam aata hai 🙏💘",
       "Mujhe tumse milkar yakeen hua, pyaar asal mein hota hai 💞"
     ];
-
     const loveText = document.getElementById("love-text");
     loveText.textContent = loveLines[Math.floor(Math.random() * loveLines.length)];
 
-    // 💕 --- Heart Animation ---
+    // 💕 Hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -547,8 +573,31 @@
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 6000);
     }
+    setInterval(createHeart, 300);
 
-    // ✨ --- Sparkle Animation ---
+    const heartMatContainer = document.querySelector(".heart-mat");
+
+    // Generate initial hearts for the mattress
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("mat-heart");
+      heart.style.left = Math.random() * 90 + "%";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      heartMatContainer.appendChild(heart);
+    }
+
+    // Keep adding new hearts continuously
+    function createMatHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("mat-heart");
+      heart.style.left = Math.random() * 90 + "%";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      heartMatContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createMatHeart, 200);
+
+    // ✨ Sparkles
     function createSparkle() {
       const sparkle = document.createElement("div");
       sparkle.classList.add("sparkle");
@@ -558,22 +607,15 @@
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 4000);
     }
-
-    setInterval(createHeart, 300);
     setInterval(createSparkle, 200);
 
-    // 💗 --- Mouse Heart Trail ---
+    // 💗 Mouse Heart Trail
     const hearts = [];
     const trailLength = 50;
     let heartIndex = 0;
-
     for (let i = 0; i < trailLength; i++) {
-      const h = document.createElement('div');
-      h.classList.add('cursor-heart');
-      document.body.appendChild(h);
-      hearts.push(h);
+      const h = document.createElement('div'); h.classList.add('cursor-heart'); document.body.appendChild(h); hearts.push(h);
     }
-
     document.addEventListener('mousemove', (e) => {
       const heart = hearts[heartIndex];
       heartIndex = (heartIndex + 1) % trailLength;
@@ -584,15 +626,12 @@
       heart.style.animation = 'growAndFade 0.7s ease-out forwards';
     });
 
-    // 💌 --- Access name from URL ---
+    // 💌 Get name from URL
     const params = new URLSearchParams(window.location.search);
     const name = params.get("name");
     const text = document.getElementById("txt");
-
     if (name) {
       text.textContent = `${name} ❤️`;
-
-      // Update nav links to pass the name parameter
       document.querySelectorAll('.nav-btn').forEach(btn => {
         if (!btn.href.includes('index.htm')) {
           const url = new URL(btn.href);
@@ -602,54 +641,56 @@
       });
     }
 
-    // 🎵 --- Music Toggle ---
+    // 🎵 Music toggle
     const music = document.getElementById("background-music");
-const musicToggle = document.getElementById("music-toggle");
-const iconMuted = document.getElementById("icon-muted");
-const iconPlaying = document.getElementById("icon-playing");
+    const musicToggle = document.getElementById("music-toggle");
+    const iconMuted = document.getElementById("icon-muted");
+    const iconPlaying = document.getElementById("icon-playing");
+    let isPlaying = true;
+    iconMuted.style.display = "none"; iconPlaying.style.display = "inline";
+    musicToggle.addEventListener("click", () => {
+      if (isPlaying) { music.pause(); iconMuted.style.display = "inline"; iconPlaying.style.display = "none"; }
+      else { music.play().catch(e => console.error(e)); iconMuted.style.display = "none"; iconPlaying.style.display = "inline"; }
+      isPlaying = !isPlaying;
+    });
 
-// Set initial state to playing
-let isPlaying = true;
-iconMuted.style.display = "none";
-iconPlaying.style.display = "inline";
-
-musicToggle.addEventListener("click", () => {
-  if (isPlaying) {
-    music.pause();
-    iconMuted.style.display = "inline";
-    iconPlaying.style.display = "none";
-  } else {
-    music.play().catch(e => console.error("Autoplay was prevented:", e));
-    iconMuted.style.display = "none";
-    iconPlaying.style.display = "inline";
-  }
-  isPlaying = !isPlaying;
-});
-
+    // Theme Toggler
+    const themeWrapper = document.querySelector(".theme-toggle-wrapper");
+    const themeCheckbox = document.getElementById("theme-toggle-checkbox");
     const themes = ["light", "dark", "romantic", "purple"];
-  let currentThemeIndex = 0;
+    let currentThemeIndex = 0;
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    document.body.classList.add(`${savedTheme}-theme`);
-    currentThemeIndex = themes.indexOf(savedTheme);
-  } else {
-    document.body.classList.add("light-theme");
-  }
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.body.classList.add(`${savedTheme}-theme`);
+      currentThemeIndex = themes.indexOf(savedTheme);
+    } else {
+      document.body.classList.add("light-theme");
+    }
 
-  const btn = document.getElementById("theme-toggle");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      document.body.classList.remove(`${themes[currentThemeIndex]}-theme`);
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    // Function to apply theme
+    function applyTheme() {
       const newTheme = themes[currentThemeIndex];
+      document.body.className = ""; // remove old theme
       document.body.classList.add(`${newTheme}-theme`);
       localStorage.setItem("theme", newTheme);
-    });
-  }
-  </script>
+    }
 
+    // Click wrapper to cycle themes
+    themeWrapper.addEventListener("click", () => {
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      applyTheme();
+      // Toggle checkbox state for sliding circle
+      themeCheckbox.checked = !themeCheckbox.checked;
+    });
+
+    // Initial apply
+    applyTheme();
+
+
+
+  </script>
 </body>
 
 </html>
